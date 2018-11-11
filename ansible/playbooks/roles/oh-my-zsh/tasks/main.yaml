@@ -9,9 +9,8 @@
       - zsh
 
 - name: Get .zshrc stat to be able to perform a backup
-  local_action: 
-    stat:
-      path: ~/.zshrc
+  stat:
+    path: ~/.zshrc
   register: zshrc
 
 - name: Backing up existing ~/.zshrc
