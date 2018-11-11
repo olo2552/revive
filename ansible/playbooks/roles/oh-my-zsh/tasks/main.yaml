@@ -3,25 +3,28 @@
   pacman:
     state: latest
     name: "{{ packages }}"
-    register: installation
   variables:
     packages:
       - git
       - zsh
 
+- name: Get .zshrc stat to be able to perform a backup
+  local_action: 
+    stat:
+      path: ~/.zshrc
+  register: zshrc
+
 - name: Backing up existing ~/.zshrc
   copy:
     src: ~/.zshrc
-    dest: ~/.zshrc.backup
-  shell: if [ -f ~/.zshrc ]; then mv ~/.zshrc{,.orig}; fi
-  when: installation == success
+    dest: ~/.zshrc_backup
   become: no
+  when: zshrc.stat.exists
 
 - name: Cloning oh-my-zsh
   git:
-    repo=https://github.com/robbyrussell/oh-my-zsh
-    dest=~/.oh-my-zsh
-  when: installation == success
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
   register: cloning
   become: no
 
@@ -29,5 +32,5 @@
   copy:
     src=~/.oh-my-zsh/templates/zshrc.zsh-template
     dest=~/.zshrc
-  when: cloning == success
+  when: cloning is success
   become: no
