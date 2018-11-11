@@ -1,4 +1,4 @@
 #!/bin/bash
 pacman -Syu ansible
-cd ansible/playbooks
+cd ./ansible/playbooks
 ansible-playbook Revive-playbook.yaml
