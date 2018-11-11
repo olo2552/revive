@@ -1,0 +1,44 @@
+---
+- name: run the playbook tasks on the localhost
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  roles:
+    - oh-my-zsh
+  tasks:
+  - name: Print out the hostname of target
+    command: hostname
+
+  - name: Run the equivalent of "pacman -Syu"
+  pacman:
+    update_cache: yes
+    upgrade: yes
+
+  - name: Install list of packages
+    apt:
+      name: "{{ packages }}"
+      state: latest
+    vars:
+      packages:
+        - arandr
+        - bat
+        - cmatrix
+        - couchdb
+        - git
+        - postgresql
+        - terminator
+        - thunderbird
+        - tor
+        - tmux
+        - unrar
+        - unzip
+        - vim
+        - xclip
+        - x11-xserver-utils
+        - youtube-dl
+        - zsh
+
+  - name: Upgrade all packages to the latest version i.e. apt upgrade
+    pacman:
+      update_cache: yes
+      upgrade: yes
