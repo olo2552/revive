@@ -3,7 +3,7 @@
   pacman:
     state: latest
     name: "{{ packages }}"
-  variables:
+  vars:
     packages:
       - git
       - zsh
