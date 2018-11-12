@@ -27,7 +27,7 @@
   become: no
   when: bashrc.stat.exists
 
-- name: Add serve alias for foo user
+- name: Add keepass alias to always use versioned DB by default
   lineinfile:
     dest: ~/.bashrc
     line: "alias keepassx='keepassx ~/repos/keepassdb/Passwords.kdbx'"
