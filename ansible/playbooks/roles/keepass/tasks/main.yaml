@@ -11,7 +11,7 @@
 - name: Cloning KeePassDB
   git:
     repo: https://github.com/olo2552/keepassDB.git
-    dest: ~/repos/
+    dest: ~/repos/keepassDB
     clone: yes
   become: no
 
@@ -30,9 +30,9 @@
 - name: Add keepass alias to always use versioned DB by default
   lineinfile:
     dest: ~/.bashrc
-    line: "alias keepassx='keepassx ~/repos/keepassdb/Passwords.kdbx'"
+    line: "alias keepassx='keepassx ~/repos/keepassDB/Passwords.kdbx'"
     owner: "{{ ansible_user_id }}"
-    regexp: "^alias keepassx='keepassx ~/repos/keepassdb/Passwords.kdbx'^"
+    regexp: "^alias keepassx='keepassx ~/repos/keepassDB/Passwords.kdbx'^"
     state: present
     insertafter: EOF
     create: yes
