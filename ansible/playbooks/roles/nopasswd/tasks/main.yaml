@@ -1,3 +1,8 @@
+- name: Install sudo package
+  pacman:
+    - name: "sudo"
+    - state: latest
+
 - name: Make sure 'wheel' group is created
   group:
     name: wheel
