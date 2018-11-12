@@ -15,6 +15,7 @@
       - couchdb
       - git
       - postgresql
+      - ranger
       - terminator
       - thunderbird
       - tor
