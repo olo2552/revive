@@ -8,6 +8,7 @@
       command: hostname
   
   roles:
+    - nopasswd
     - oh-my-zsh
     - keepass
     - pacman
