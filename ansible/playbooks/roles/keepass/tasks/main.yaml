@@ -1,0 +1,42 @@
+---
+- name: Install KeePassX
+  pacman:
+    state: latest
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - git
+      - keepassx
+
+- name: Cloning KeePassDB
+  git:
+    repo: https://github.com/olo2552/keepassDB.git
+    dest: ~/repos
+  become: no
+
+- name: Get .bashrc stat to be able to perform a backup
+  stat:
+    path: ~/.bashrc
+  register: bashrc
+
+- name: Backup existing ~/.bashrc
+  copy:
+    src: ~/.bashrc
+    dest: ~/.bashrc_backup
+  become: no
+  when: bashrc.stat.exists
+
+- name: keepassx alias to automatically
+  lineinfile:
+    path: ~/.bashrc
+    line: "export alias keepassx="keepassx ~/repos/keepassdb/"
+
+- name: Add serve alias for foo user
+  lineinfile:
+    dest: ~/.bashrc
+    line: "alias keepassx='keepassx ~/repos/keepassdb/Passwords.kdbx'"
+    owner: "{{ ansible_user_id }}"
+    regexp: "^alias keepassx='keepassx ~/repos/keepassdb/Passwords.kdbx'^"
+    state: present
+    insertafter: EOF
+    create: True
