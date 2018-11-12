@@ -11,7 +11,8 @@
 - name: Cloning KeePassDB
   git:
     repo: https://github.com/olo2552/keepassDB.git
-    dest: ~/repos
+    dest: ~/repos/
+    clone: yes
   become: no
 
 - name: Get .bashrc stat to be able to perform a backup
@@ -26,11 +27,6 @@
   become: no
   when: bashrc.stat.exists
 
-- name: keepassx alias to automatically
-  lineinfile:
-    path: ~/.bashrc
-    line: "export alias keepassx="keepassx ~/repos/keepassdb/"
-
 - name: Add serve alias for foo user
   lineinfile:
     dest: ~/.bashrc
@@ -39,4 +35,4 @@
     regexp: "^alias keepassx='keepassx ~/repos/keepassdb/Passwords.kdbx'^"
     state: present
     insertafter: EOF
-    create: True
+    create: yes

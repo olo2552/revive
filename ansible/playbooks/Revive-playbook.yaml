@@ -9,4 +9,5 @@
   
   roles:
     - oh-my-zsh
+    - keepass
     - pacman
