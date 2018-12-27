@@ -1,0 +1,27 @@
+- name: Get .bashrc stat to be able to perform a backup
+  stat:
+    path: ~/.zshrc
+  register: zshrc
+
+- name: Backup existing ~/.zshrc
+  copy:
+    src: ~/.zshrc
+    dest: ~/.zshrc_backup
+  become: no
+  when: zshrc.stat.exists
+
+- name: Create symbolic link 
+  file:
+    src: "../../../.bash_aliases"
+    dest: "~/bash_aliases"
+    state: link
+
+- name: Source bash_aliases to .zshrc for Z-shell support
+  lineinfile:
+    dest: ~/.zshrc
+    line: "source ~/.bash_aliases"
+    regexp: "^source*bash_aliases"
+    owner: "{{ ansible_user_id }}"
+    state: present
+    insertafter: EOF
+    create: yes
