@@ -2,11 +2,13 @@
   pacman:
     update_cache: yes
     upgrade: yes
+  become: yes
 
-- name: Install list of packages
+- name: Install list of pacman packages
   pacman:
     name: "{{ packages }}"
     state: latest
+  become: yes
   vars:
     packages:
       - arandr
@@ -14,8 +16,10 @@
       - cmatrix
       - couchdb
       - git
+      - jre10-openjdk
       - postgresql
       - ranger
+      - redshift
       - terminator
       - thunderbird
       - tor
@@ -26,9 +30,11 @@
       - xclip
       - xorg-apps
       - youtube-dl
+      - yay
       - zsh
 
 - name: Upgrade all packages to the latest version
   pacman:
     update_cache: yes
     upgrade: yes
+  become: yes
