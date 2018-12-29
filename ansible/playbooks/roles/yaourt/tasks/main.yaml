@@ -1,0 +1,16 @@
+- name: Manually install ansible-aur-git
+  git:
+    repo: https://github.com/kewlfft/ansible-aur.git
+    dest: ~/.ansible/plugins/modules/aur
+    clone: yes
+
+- name: Install yaourt packages
+  aur: 
+    use: yay
+    aur_only: no
+    skip_pgp_check: no
+    name: 
+      - google-chrome
+      - intellij-idea-ultimate-edition
+      - jetbrains-toolbox
+  become: no
