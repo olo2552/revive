@@ -1,0 +1,16 @@
+- name: Create redhift config folder
+  file:
+    path: ~/.config/redshift
+    state: directory
+
+- name: Remove current redshift config file
+  file:
+    dest: ~/.config/redshift/redshift.conf
+    state: absent
+
+- name: Create symbolic link with versioned file
+  file:
+    src: ~/repos/REVIVE/redshift.conf
+    dest: ~/.config/redshift/redshift.conf
+    state: link
+    force: yes
