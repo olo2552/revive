@@ -10,10 +10,10 @@
   become: no
   when: zshrc.stat.exists
 
-- name: Create symbolic link 
+- name: Create symbolic link for versioned .bash_aliases
   file:
-    src: "../../../.bash_aliases"
-    dest: "~/bash_aliases"
+    src: "/home/olo2552/repos/REVIVE/.bash_aliases"
+    dest: "/home/olo2552/.bash_aliases"
     state: link
 
 - name: Source bash_aliases to .zshrc for Z-shell support
