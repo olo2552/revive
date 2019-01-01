@@ -9,30 +9,27 @@
       - zsh
   become: yes 
 
-- name: Get .zshrc stat to be able to perform a backup
-  stat:
-    path: ~/.zshrc
-  register: zshrc
-
-- name: Backing up existing ~/.zshrc
-  when: zshrc.stat.exists
-  copy:
-    src: ~/.zshrc
-    dest: ~/.zshrc_backup
-
 - name: Cloning oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
     dest: ~/.oh-my-zsh
     clone: yes
 
-- name: Creating new ~/.zshrc
-  copy:
-    src: ~/.oh-my-zsh/templates/zshrc.zsh-template
-    dest: ~/.zshrc
-
 - name: Change default shell to ZSH
   user:
     name: "{{ ansible_env.USER }}"
     shell: /usr/bin/zsh
   become: yes
+
+- name: Download ZSH autocompletion
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ lookup('env', 'ZSH_CUSTOM') }}/plugins/zsh-autosuggestions"
+    clone: yes
+
+
+- name: Create symbolic link for versioned .bash_aliases
+  file:
+    src: "~/repos/REVIVE/.zshrc"
+    dest: "~/.zshrc"
+    state: link
