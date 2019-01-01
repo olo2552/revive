@@ -13,4 +13,6 @@
       - google-chrome
       - intellij-idea-ultimate-edition
       - jetbrains-toolbox
+      - slack-desktop
+      - spotify
   become: no

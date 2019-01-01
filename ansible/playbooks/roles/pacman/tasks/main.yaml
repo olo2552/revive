@@ -17,9 +17,13 @@
       - couchdb
       - git
       - jre10-openjdk
+      - neofetch
+      - pavucontrol
+      - pulseaudio
       - postgresql
       - ranger
       - redshift
+      - steam
       - terminator
       - thunderbird
       - tor
