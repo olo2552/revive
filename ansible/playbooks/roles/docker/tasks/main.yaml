@@ -1,0 +1,32 @@
+- name: Install docker from pacman
+  pacman:
+    name: 
+      - docker
+      - docker-compose
+    state: latest
+  become: yes
+
+- name: Add docker group
+  group:
+    name: docker
+    state: present
+  become: yes
+
+- name: Add the current user to docker group
+  user:
+    name: olo2552
+    groups: docker
+    append: yes
+  become: yes
+
+- name: Make sure a docker daemon service is started on autostart
+  systemd:
+    enabled: yes
+    name: docker
+  become: yes
+
+- name: Make sure a docker daemon service is started on current session
+  systemd:
+    state: started
+    name: docker
+  become: yes
