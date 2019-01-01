@@ -2,7 +2,7 @@
 alias spotify="/usr/bin/spotify --force-device-scale-factor=2.2"
 
 # autoload the default database
-alias keepassx="keepassx ~/repos/keepassDB/Passwords.kdbx"
+alias keepassxc="keepassxc ~/repos/keepassDB/Passwords.kdbx"
 
 # let the user decide what to do in terms of screenshot
 alias gnome-screenshot="gnome-screenshot -i"
