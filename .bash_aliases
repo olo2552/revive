@@ -22,3 +22,9 @@ alias chgrp='chgrp --preserve-root'
 
 # Enable resuming downloads
 alias wget='wget -c'
+
+# human-readable sizes
+alias df='df -h' 
+
+# show sizes in MB
+alias free='free -m'
