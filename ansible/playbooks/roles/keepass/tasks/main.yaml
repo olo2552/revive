@@ -13,24 +13,3 @@
     repo: https://github.com/olo2552/keepassDB.git
     dest: ~/repos/keepassDB
     clone: yes
-
-- name: Get .bashrc stat to be able to perform a backup
-  stat:
-    path: ~/.bashrc
-  register: bashrc
-
-- name: Backup existing ~/.bashrc
-  copy:
-    src: ~/.bashrc
-    dest: ~/.bashrc_backup
-  when: bashrc.stat.exists
-
-- name: Add keepass alias to always use versioned DB by default
-  lineinfile:
-    dest: ~/.bashrc
-    line: "alias keepassx='keepassx ~/repos/keepassDB/Passwords.kdbx'"
-    owner: "{{ ansible_user_id }}"
-    regexp: "^alias keepassx="
-    state: present
-    insertafter: EOF
-    create: yes

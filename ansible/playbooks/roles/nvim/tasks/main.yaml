@@ -1,0 +1,21 @@
+---
+- name: Ensure NeoVim is installed
+  pacman:
+    name: neovim
+    state: present
+  become: yes
+
+- name: Ensure folder for VimPlug Exists
+  file: 
+    path: /home/olo2552/.local/share/nvim/site/autoload/
+    recurse: yes
+    state: directory
+    mode: "u=rwx,g=rwx,o=rwx"
+  become_user: olo2552
+
+- name: install VimPlug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: /home/olo2552/.local/share/nvim/site/autoload/plug.vim
+    force: yes
+  become_user: olo2552    

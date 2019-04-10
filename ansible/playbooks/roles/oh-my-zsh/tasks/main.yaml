@@ -24,12 +24,12 @@
 - name: Download ZSH autocompletion
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
-    dest: "{{ lookup('env', 'ZSH_CUSTOM') }}/plugins/zsh-autosuggestions"
+    dest: "/home/olo2552/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
     clone: yes
 
-
-- name: Create symbolic link for versioned .bash_aliases
+- name: Create symbolic link for versioned .zshrc
   file:
-    src: "~/repos/REVIVE/.zshrc"
-    dest: "~/.zshrc"
+    src: "/home/olo2552/repos/REVIVE/.zshrc"
+    dest: "/home/olo2552/.zshrc"
     state: link
+    force: yes

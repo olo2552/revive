@@ -14,8 +14,12 @@
       - arandr
       - bat
       - cmatrix
+      - clementine
       - couchdb
+      - elixir
+      - geoclue2
       - git
+      - guake
       - jre10-openjdk
       - neofetch
       - pavucontrol
@@ -24,10 +28,12 @@
       - ranger
       - redshift
       - steam
+      - stow
       - terminator
       - thunderbird
       - tor
       - tmux
+      - ttf-fira-code
       - unrar
       - unzip
       - vim
