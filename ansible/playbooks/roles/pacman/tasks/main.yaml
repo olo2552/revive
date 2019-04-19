@@ -17,6 +17,7 @@
       - clementine
       - couchdb
       - elixir
+      - firefox
       - geoclue2
       - git
       - guake
