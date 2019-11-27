@@ -1,19 +1,19 @@
 - name: Get .bashrc stat to be able to perform a backup
   stat:
-    path: ~/.zshrc
+    path: $SUDO_USER/.zshrc
   register: zshrc
 
 - name: Backup existing ~/.zshrc
   copy:
-    src: ~/.zshrc
-    dest: ~/.zshrc_backup
+    src: $SUDO_USER/.zshrc
+    dest: $SUDO_USER/.zshrc_backup
   become: no
   when: zshrc.stat.exists
 
 - name: Create symbolic link for versioned .bash_aliases
   file:
-    src: "~/repos/REVIVE/.bash_aliases"
-    dest: "~/.bash_aliases"
+    src: "/home/$SUDO_USER/repos/REVIVE/.bash_aliases"
+    dest: "/home/$SUDO_USER/.bash_aliases"
     state: link
 
 - name: Source bash_aliases to .zshrc for Z-shell support

@@ -7,14 +7,14 @@
     - name: Print out the hostname of target
       command: hostname
   roles:
+    # - pacman
+    # - yaourt
+    # - stow
     # - nopasswd
     # - oh-my-zsh
     # - keepass
-    # - pacman
-    # - aliases
-    # - redshift
-    # - yaourt
-    # - dpi
-    # - locale
+  # - locale
     # - docker
-    - nvim
+  # - nvim
+    - swapoff
+  #- githubixx.kubectl

@@ -9,27 +9,30 @@
       - zsh
   become: yes 
 
-- name: Cloning oh-my-zsh
+- name: Clone oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
-    dest: ~/.oh-my-zsh
+    dest: /home/tatchy/.oh-my-zsh
     clone: yes
-
-- name: Change default shell to ZSH
-  user:
-    name: "{{ ansible_env.USER }}"
-    shell: /usr/bin/zsh
   become: yes
+  become_user: "{{ lookup('env', 'USER') }}"
 
 - name: Download ZSH autocompletion
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
-    dest: "/home/olo2552/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: /home/tatchy/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     clone: yes
+  become: yes
+  become_user: "{{ lookup('env', 'USER') }}"
 
-- name: Create symbolic link for versioned .zshrc
-  file:
-    src: "/home/olo2552/repos/REVIVE/.zshrc"
-    dest: "/home/olo2552/.zshrc"
-    state: link
-    force: yes
+- name: Install aterminal plugin
+  shell: "bash < <(curl -s -S -L https://raw.githubusercontent.com/guiferpa/aterminal/master/installer.sh)"
+  ignore_errors: true
+  become: yes
+  become_user: "{{ lookup('env', 'USER') }}"
+
+- name: Change default shell to ZSH
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: /usr/bin/zsh
+  become: yes

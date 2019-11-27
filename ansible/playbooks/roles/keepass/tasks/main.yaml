@@ -6,10 +6,12 @@
   vars:
     packages:
       - git
-      - keepassx
+      - keepassxc
 
 - name: Cloning KeePassDB
   git:
     repo: https://github.com/olo2552/keepassDB.git
     dest: ~/repos/keepassDB
     clone: yes
+  become: yes
+  become_user: "{{ lookup('env', 'USER') }}"

@@ -13,16 +13,24 @@
     packages:
       - arandr
       - bat
+      - calibre
       - cmatrix
       - clementine
       - couchdb
+      - cmake
       - elixir
+      - emcas
+      - evince
       - firefox
+      - fzf
       - geoclue2
       - git
       - guake
       - jre10-openjdk
+      - kublectl
+      - minikube
       - neofetch
+      - obs-studio
       - pavucontrol
       - pulseaudio
       - postgresql
@@ -33,10 +41,12 @@
       - terminator
       - thunderbird
       - tor
+      - transmission
       - tmux
       - ttf-fira-code
       - unrar
       - unzip
+      - wine
       - vim
       - xclip
       - xorg-apps

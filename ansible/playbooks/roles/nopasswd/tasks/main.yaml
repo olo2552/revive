@@ -19,7 +19,7 @@
 
 - name: Add sudoers users to wheel group
   user: 
-    name: olo2552 
+    name: "{{ lookup('env', 'USER') }}" 
     group: wheel 
     state: present
     append: yes 

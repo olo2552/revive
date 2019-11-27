@@ -1,7 +1,8 @@
+---
 - name: Manually install ansible-aur-git
   git:
     repo: https://github.com/kewlfft/ansible-aur.git
-    dest: ~/.ansible/plugins/modules/aur
+    dest: /home/tatchy/.ansible/plugins/modules/aur
     clone: yes
 
 - name: Install yaourt packages

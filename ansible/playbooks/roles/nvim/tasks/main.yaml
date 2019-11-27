@@ -1,21 +1,29 @@
 ---
 - name: Ensure NeoVim is installed
   pacman:
-    name: neovim
+    name: 
+      - python
+      - python3
+      - python-pip
+      - neovim
     state: present
   become: yes
 
 - name: Ensure folder for VimPlug Exists
   file: 
-    path: /home/olo2552/.local/share/nvim/site/autoload/
+    path: "/home/{{ lookup('env', 'USER') }}/.local/share/nvim/site/autoload/"
     recurse: yes
     state: directory
-    mode: "u=rwx,g=rwx,o=rwx"
-  become_user: olo2552
+  become_user: "{{ lookup('env', 'USER') }}"
 
-- name: install VimPlug
+- name: Install VimPlug
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: /home/olo2552/.local/share/nvim/site/autoload/plug.vim
+    dest: "/home/{{ lookup('env', 'USER') }}/.local/share/nvim/site/autoload/plug.vim"
     force: yes
-  become_user: olo2552    
+  become: yes
+  become_user: "{{ lookup('env', 'USER') }}"
+
+- name: install YouCompleteMe deps
+  pip:
+    name: neovim

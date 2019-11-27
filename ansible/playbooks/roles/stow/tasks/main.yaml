@@ -1,0 +1,25 @@
+---
+- name: Clone the dotfiles repo
+#   shell: echo whoami
+  git:
+    repo: https://github.com/olo2552/dotfiles/
+    dest: "/home/tatchy/repos/dotfiles"
+    clone: yes
+
+- name: Ensure Stow is installed
+  pacman:
+    state: latest
+    name: stow
+
+- name: Remove files to be stowed
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+  - /home/tatchy/.xinitrc
+  - /home/tatchy/.Xresources
+  - /home/tatchy/.config/ranger/rc.conf
+  - /home/tatchy/.i3
+
+- name: Stow the dotfiles
+  shell:  stow * --stow --verbose --dir=/home/tatchy/repos/dotfiles/ --target=/home/tatchy/ --simulate
