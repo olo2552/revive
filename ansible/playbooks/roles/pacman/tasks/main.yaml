@@ -19,17 +19,20 @@
       - couchdb
       - cmake
       - elixir
-      - emcas
+      - emacs
       - evince
       - firefox
       - fzf
       - geoclue2
       - git
+      - gpick
       - guake
       - jre10-openjdk
-      - kublectl
+      - kubectl
+      - maven
       - minikube
       - neofetch
+      - neovim
       - obs-studio
       - pavucontrol
       - pulseaudio
@@ -38,10 +41,12 @@
       - redshift
       - steam
       - stow
+      - sysbench
       - terminator
       - thunderbird
       - tor
-      - transmission
+      - transmission-gtk
+      - transmission-cli
       - tmux
       - ttf-fira-code
       - unrar
@@ -51,6 +56,7 @@
       - xclip
       - xorg-apps
       - youtube-dl
+      - yarn
       - yay
       - zsh
 

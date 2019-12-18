@@ -1,13 +1,14 @@
----
-- name: Ensure NeoVim is installed
-  pacman:
-    name: 
-      - python
-      - python3
-      - python-pip
-      - neovim
-    state: present
-  become: yes
+# - name: Ensure NeoVim is installed
+#   pacman:
+#     name: "{{ packages }}"
+#     state: latest
+#   become: yes
+#   vars:
+#     packages:
+#       - python
+#       - python3
+#       - python-pip
+#       - neovim
 
 - name: Ensure folder for VimPlug Exists
   file: 

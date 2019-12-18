@@ -9,12 +9,12 @@
   roles:
     # - pacman
     # - yaourt
-    # - stow
+          #- stow
     # - nopasswd
-    # - oh-my-zsh
+    - oh-my-zsh
     # - keepass
-  # - locale
+    # - locale
     # - docker
-  # - nvim
-    - swapoff
-  #- githubixx.kubectl
+    # - nvim
+    # - swapoff
+      # - githubixx.kubectl

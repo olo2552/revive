@@ -22,4 +22,4 @@
   - /home/tatchy/.i3
 
 - name: Stow the dotfiles
-  shell:  stow * --stow --verbose --dir=/home/tatchy/repos/dotfiles/ --target=/home/tatchy/ --simulate
+  shell:  stow * --restow --verbose --dir=/home/tatchy/repos/dotfiles/ --target=/home/tatchy/
